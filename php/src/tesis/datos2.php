@@ -1,14 +1,28 @@
+<?php
+    include 'inc/header.php';
+
+    Session::CheckSession();
+
+    $logMsg = Session::get('logMsg');
+    if (isset($logMsg)) {
+    echo $logMsg;
+    }
+    $msg = Session::get('msg');
+    if (isset($msg)) {
+    echo $msg;
+    }
+    Session::set("msg", NULL);
+    Session::set("logMsg", NULL);
+?>
 
 <?php
-include 'inc/header.php';
-//$id=htmlspecialchars ($_POST["datos2"]);
 $id=$_GET["id"];
 //echo $id;
 //Creates new record as per request
     //Connect to database
-    $servername = "localhost";
+    $servername = "192.168.0.3:9906";
     $username = "root";
-    $password = "";
+    $password = "MYSQL_ROOT_PASSWORD";
     $dbname = "db_admin";
 
 
@@ -33,8 +47,8 @@ $id=$_GET["id"];
 
     if (!empty($_GET[$temp2])) {
         
-        $query="INSERT INTO $name ($readings,link,cur_time) VALUES (" ;
-        for($i=0; $i<count($cadena) ;$i=$i+1){ $temp=$cadena[$i];$query .= "$_GET[$temp],"  ; } $query .= " $id,NOW()); ";
+        $query="INSERT INTO $name ($readings,link) VALUES (" ;
+        for($i=0; $i<count($cadena) ;$i=$i+1){ $temp=$cadena[$i];$query .= "$_GET[$temp],"  ; } $query .= " $id); ";
         echo $query;
         if($conn->query($query) === TRUE){
             echo "OK";
@@ -86,10 +100,10 @@ $id=$_GET["id"];
             $cad.="\"$cadena[$i]\",";
         }
         $cad= substr_replace($cad,"",-1);
-        $cad.="],\n    \"http\": {\n      \"url\": \"http:\/\/192.168.0.12:8668/v2\/notify\"\n    }\n  },\n  \"throttling\": 0\n}";
+        $cad.="],\n    \"http\": {\n      \"url\": \"http:\/\/192.168.0.3:8668/v2\/notify\"\n    }\n  },\n  \"throttling\": 0\n}";
         echo $cad;
 
-        $url = "http://192.168.0.12:1026/v2/subscriptions";
+        $url = "http://192.168.0.3:1026/v2/subscriptions";
         $headers = array('Content-Type: application/json');
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -115,7 +129,7 @@ $id=$_GET["id"];
                 }
                 $payload.="}";
                 //echo $payload;
-              $url = "http://192.168.0.12:1026/v2/entities";
+              $url = "http://192.168.0.3:1026/v2/entities";
               $headers = array('Content-Type: application/json');
               $curl = curl_init();
               curl_setopt($curl, CURLOPT_URL, $url);
@@ -133,7 +147,7 @@ $id=$_GET["id"];
                 }
                 $pay= substr_replace($pay,"",-1);
                 $pay.="}";
-                $url = "http://192.168.0.12:1026/v2/entities/$name/attrs";
+                $url = "http://192.168.0.3:1026/v2/entities/$name/attrs";
                 $headers = array('Content-Type: application/json');
                 $curl = curl_init();
                 curl_setopt($curl, CURLOPT_URL, $url);
@@ -151,7 +165,10 @@ $id=$_GET["id"];
 
 
 
-    include 'inc/footer.php';
 
 ?>
 
+
+<?php
+    include 'inc/footer.php';
+?>

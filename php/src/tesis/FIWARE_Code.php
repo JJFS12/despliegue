@@ -240,7 +240,7 @@ $i=$_GET['id'];
 
               $yaml = Yaml::dump($data,4,2);
 
-              file_put_contents('docker-compose.yaml', $yaml);
+              file_put_contents('docker-compose.yml', $yaml);
 
               ?>
 
@@ -259,7 +259,7 @@ $i=$_GET['id'];
                 <div class="editor" id="editor" > <?php echo " $yaml " ?></div>
 
                 <div class="button-container">
-                <button><a href="download.php?path=docker-compose.yaml"> download</a></button>
+                <button><a href="download.php?path=docker-compose.yml"> download</a></button>
                 </div>
 
                 <div class="output"></div>

@@ -84,7 +84,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'logout') {
               </li>
               <li class="nav-item">
 
-                  <a class="nav-link" href="DeviceList.php"><i class="fas fa-users mr-2"></i>Device lists </span></a>
+                  <a class="nav-link" href="DevicesList.php"><i class="fas fa-users mr-2"></i>Device lists </span></a>
               </li>
               <li class="nav-item
 

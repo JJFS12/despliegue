@@ -6,7 +6,9 @@
   $name=$_GET['name'];
  ?>
 
+
 <?php
+ /*
 
 
    $servername = "localhost";
@@ -39,6 +41,7 @@ while($row = mysqli_fetch_array($result))
 
 }
 $chart_data = substr($chart_data, 0, -1);
+ */
 
 ?>
 
@@ -47,7 +50,7 @@ $chart_data = substr($chart_data, 0, -1);
 
 
 <div class="embed-responsive embed-responsive-16by9">
-    <iframe class="embed-responsive-item" src="http://192.168.0.12:3003/dashboard/new?orgId=1" allowfullscreen></iframe>
+    <iframe class="embed-responsive-item" src="http://192.168.0.3:3003/dashboard/new?orgId=1" allowfullscreen></iframe>
 </div>
 <?php
   include 'inc/footer.php';

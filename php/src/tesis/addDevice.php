@@ -119,6 +119,9 @@ if (isset($deviceAdd)) {
                    <option value="28">Dirección del viento en grados</option>
                    <option value="29">Velocidad del viento en m/s</option>
                    <option value="humedad">humedad</option>
+                   <option value="gas">gas</option>
+                   <option value="agua">agua</option>
+                   <option value="pulso">pulso</option>
 
                  </select>
                </div>

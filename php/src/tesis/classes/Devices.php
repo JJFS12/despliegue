@@ -3,6 +3,7 @@
 //include 'lib/Database.php';
 include_once 'lib/Session.php';
 $id =  Session::get('id');
+#echo $id;
 class Devices{
   // Db Property
   private $db;
@@ -59,7 +60,7 @@ class Devices{
        $stmt->bindValue(':IoTAgent',$IoTAgent);;
        $result = $stmt->execute();
        $col_types = array();
-       array_push($readings,"link","cur_time","id");
+       array_push($readings,"link","id");
        for($i=0; $i<count($readings) ;$i=$i+1)
         {
           $col_types[$i] ='varchar(10)' ;
@@ -100,7 +101,7 @@ class Devices{
    public function selectAllDeviceData(){
      $id =  Session::get('id');
 
-     $sql = "SELECT * FROM tbl_device WHERE deviceid =$id ORDER BY id DESC";
+     $sql = "SELECT * FROM tbl_device WHERE deviceid =$id";
      $stmt = $this->db->pdo->prepare($sql);
      $stmt->execute();
      return $stmt->fetchAll(PDO::FETCH_OBJ);

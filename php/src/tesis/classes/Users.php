@@ -162,7 +162,7 @@ class Users{
         return $msg;
     }else{
 
-      $sql = "INSERT INTO tbl_users(name, username, email, password,roleid) VALUES(:name, :username, :email, :password,:roleid)";
+      $sql = "INSERT INTO tbl_users(username, email, password,roleid) VALUES(:username, :email, :password,:roleid)";
       $stmt = $this->db->pdo->prepare($sql);
       //$stmt->bindValue(':name', $name);
       $stmt->bindValue(':username', $username);
@@ -469,7 +469,6 @@ class Users{
 
       $old_pass = $data['old_password'];
       $new_pass = $data['new_password'];
-
 
       if ($old_pass == "" || $new_pass == "" ) {
         $msg = '<div class="alert alert-danger alert-dismissible mt-3" id="flash-msg">

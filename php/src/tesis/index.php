@@ -62,7 +62,7 @@ if (isset($username)) {
                   <thead>
                     <tr>
                       <th  class="text-center">SL</th>
-                      <th  class="text-center">Name</th>
+                     
                       <th  class="text-center">Username</th>
                       <th  class="text-center">Email address</th>
 
@@ -90,7 +90,7 @@ if (isset($username)) {
                       >
 
                         <td><?php echo $i; ?></td>
-                        <td><?php echo $value->name; ?></td>
+                       
                         <td><?php echo $value->username; ?> <br>
                           <?php if ($value->roleid  == '1'){
                           echo "<span class='badge badge-lg badge-info text-white'>Admin</span>";

@@ -1,10 +1,11 @@
 <?php
 
+
 if(isset($_GET['path']))
 {
 //Read the filename
 $filename = $_GET['path'];
-echo $filename;
+//echo $filename;
 //Check the file exists or not
 if(file_exists($filename)) {
 
@@ -32,4 +33,5 @@ echo "File does not exist.";
 }
 else
 echo "Filename is not defined."
+
 ?>
